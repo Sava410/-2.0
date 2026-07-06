@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web & Mobile Development Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { font-size: 16px; }
+    @media (max-width: 1440px) { html { font-size: 15px; } }
+    @media (max-width: 1024px) { html { font-size: 16px; } }
+    @media (max-width: 640px) { html { font-size: 14px; } }
+    
+    body {
+      font-family: 'Onest', -apple-system, sans-serif;
+      background: #0a0a0a;
+      color: #f5f5f5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    a { color: inherit; text-decoration: none; }
+    
+    /* ===== Hero Section ===== */
+    .hero {
+      padding: 6rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #f5f5f5 0%, #a0a0a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #999;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #7c5cff 0%, #6236e0 100%);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(124, 92, 255, 0.4);
+    }
+    
+    /* ===== Container ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* ===== Projects Section ===== */
+    .projects-section {
+      padding: 5rem 2rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #f5f5f5;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .project-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .project-preview {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #262626, #1a1a1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .project-card.vantra .project-preview {
+      background: linear-gradient(135deg, #7c5cff 0%, #6236e0 100%);
+      color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .project-card.laocoon .project-preview {
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+      color: rgba(255, 255, 255, 0.08);
+    }
+    
+    .project-card.fluxmeter .project-preview {
+      background: linear-gradient(135deg, #00e5ff 0%, #00a8cc 100%);
+      color: rgba(0, 0, 0, 0.08);
+    }
+    
+    .project-card.loopstack .project-preview {
+      background: linear-gradient(135deg, #39FF14 0%, #1a7f0a 100%);
+      color: rgba(0, 0, 0, 0.08);
+    }
+    
+    .project-info {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: #f5f5f5;
+    }
+    
+    .project-description {
+      font-size: 0.95rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+      flex: 1;
+      line-height: 1.5;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #7c5cff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+    }
+    
+    .project-link:hover {
+      gap: 0.8rem;
+      color: #a78bfa;
+    }
+    
+    /* ===== Footer ===== */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    .footer-divider {
+      max-width: 200px;
+      margin: 0 auto 2rem;
+    }
+    
+    .contact-info {
+      margin: 1.5rem 0;
+      color: #999;
+    }
+    
+    .contact-info a {
+      color: #7c5cff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+      color: #a78bfa;
+    }
+    
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 4rem 1.5rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .project-preview {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Full-Stack Web & Mobile Development</h1>
+      <p class="hero-subtitle">Crafting beautiful, high-performance digital experiences from concept to deployment</p>
+      <button class="cta-button" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })">
+        See my work
+        <span>→</span>
+      </button>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      
+      <div class="projects-grid">
+        <!-- Vantra -->
+        <div class="project-card vantra">
+          <div class="project-preview">V</div>
+          <div class="project-info">
+            <div class="project-category">Studio</div>
+            <h3 class="project-title">Vantra</h3>
+            <p class="project-description">Digital design & development studio. Modern, polished interface with smooth animations and intuitive navigation.</p>
+            <a href="index.html" class="project-link">View project <span>→</span></a>
+          </div>
+        </div>
+        
+        <!-- Laocoon -->
+        <div class="project-card laocoon">
+          <div class="project-preview">L</div>
+          <div class="project-info">
+            <div class="project-category">3D Experience</div>
+            <h3 class="project-title">Laocoon</h3>
+            <p class="project-description">Interactive 3D visualization with WebGL. Immersive storytelling through advanced web graphics and animations.</p>
+            <a href="laocoon.html" class="project-link">View project <span>→</span></a>
+          </div>
+        </div>
+        
+        <!-- Fluxmeter -->
+        <div class="project-card fluxmeter">
+          <div class="project-preview">F</div>
+          <div class="project-info">
+            <div class="project-category">Tech Landing</div>
+            <h3 class="project-title">Fluxmeter</h3>
+            <p class="project-description">Modern tech product landing page. Clean design with smooth interactions, glowing effects, and responsive layout.</p>
+            <a href="fluxmeter.html" class="project-link">View project <span>→</span></a>
+          </div>
+        </div>
+        
+        <!-- Loopstack -->
+        <div class="project-card loopstack">
+          <div class="project-preview">L</div>
+          <div class="project-info">
+            <div class="project-category">Beta Landing</div>
+            <h3 class="project-title">Loopstack</h3>
+            <p class="project-description">Closed beta product page with engaging animations. Features custom cursor, blinking indicators, and video backgrounds.</p>
+            <a href="loopstack.html" class="project-link">View project <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-divider">
+        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1);">
+      </div>
+      
+      <p style="margin-bottom: 1rem; color: #f5f5f5; font-weight: 600;">Let's build something amazing</p>
+      
+      <div class="contact-info">
+        <p>Have a project in mind? Let's talk about it.</p>
+        <p style="margin-top: 0.5rem;">
+          <a href="mailto:your@email.com">Get in touch</a>
+        </p>
+      </div>
+      
+      <p style="margin-top: 2rem; color: #555;">© 2026 Web Development. All rights reserved.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>
